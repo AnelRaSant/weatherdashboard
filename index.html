@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEATHER DASHBOARD</title>
+
+    <!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<style>
+    .header
+    {
+        color: white;
+        background-color: rgb(26, 156, 243);
+        text-align: center;
+    }
+
+
+    /* Dropdown Button */
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+</style>
+
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>WEATHER DASHBOARD</h1>
+    </div>
+
+    <div id="container">
+        <div class="columns">
+
+            <div class="card-group">
+                <div class="card">
+                  <img src="https://ichef.bbci.co.uk/images/ic/1200x675/p0617tch.jpg" class="card-img-top" alt="...">
+
+                </div>
+
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">SEARCH FOR A CITY</h5>
+                    <input class="" type="text" id="cityname" ></input>
+                    <button id="searchButton"> SEARCH</button>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">DAY FORECAST</h5>
+                  </div>
+                </div>
+              </div>
+
+
+        </div>
+    </div>
+    <script src=“https://code.jquery.com/jquery-3.4.1.min.js”></script>
+    <script>
+
+    $(document).ready(function(){
+        $("#searchButton").on("click",function(){
+            var city=$("#cityname").val()
+            $.ajax({
+                type:"GET",
+                url:"http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=a8af04f04bc65301aa8c4ef3ef7a49b5",
+
+            }).then(function(response){
+                console.log (response)
+            })
+        })
+    })
+
+      </script>
+</body>
+</html>
